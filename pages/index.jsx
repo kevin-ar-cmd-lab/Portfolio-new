@@ -17,7 +17,7 @@ export default function Home() {
 
         <div className="flex justify-center">
           <img
-            src="kevinjuma.jpg"
+            src="/kevinjuma.jpg"
             alt="kevinjuma-photo"
             className="w-48 h-48 rounded-full object-cover border-4 border-gray-800"
           />
