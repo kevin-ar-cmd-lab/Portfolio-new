@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { SunIcon, MoonIcon } from '@heroicons/react/24/solid';
 import {
@@ -15,7 +16,6 @@ export default function Navbar() {
   const { darkMode, toggleDarkMode } = useTheme();
   const pathname = usePathname();
 
-  // Navigation links with icons for both navbars
   const links = [
     { href: '/', label: 'Home', icon: HomeIcon },
     { href: '/about', label: 'About', icon: UserIcon },
@@ -32,17 +32,19 @@ export default function Navbar() {
           <div className="flex justify-between h-16 items-center">
             {/* Logo */}
             <div className="flex items-center space-x-2">
-              <img
-                src="/Kevin.jpg"
+              <Image
+                src="/Kevin.jpg" // Must match file name in public exactly
                 alt="Logo"
-                className="h-8 w-8 rounded-full object-cover border-4 border-gray-800"
+                width={32}       // same as h-8
+                height={32}      // same as w-8
+                className="rounded-full object-cover border-4 border-gray-800"
               />
               <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-yellow-400 to-green-400 animate-cycle-color drop-shadow-sm">
                 Kevin's Digital WorkSpace
               </span>
             </div>
 
-            {/* Desktop Links with icons (hidden on small screens) */}
+            {/* Desktop Links */}
             <div className="hidden md:flex space-x-8 items-center">
               {links.map(({ href, label, icon: Icon }) => {
                 const isActive = pathname === href;
@@ -82,7 +84,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Bottom Navbar - visible only on small screens */}
+      {/* Bottom Navbar - mobile */}
       <nav className="fixed bottom-0 left-0 w-full z-50 bg-white dark:bg-gray-900 shadow md:hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-around h-14 items-center">
@@ -107,11 +109,11 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Padding so content isn't hidden under fixed navbars */}
+      {/* Body padding */}
       <style jsx global>{`
         body {
-          padding-top: 4rem; /* height of top navbar */
-          padding-bottom: 3.5rem; /* height of bottom navbar on mobile */
+          padding-top: 4rem; /* top navbar height */
+          padding-bottom: 3.5rem; /* bottom navbar height on mobile */
         }
         @media (min-width: 768px) {
           body {
