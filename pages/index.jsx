@@ -1,4 +1,4 @@
-'use client';
+
 
 import { useTheme } from '../context/ThemeContext';
 import FitToScreenLayout from '../components/FitToScreenLayout';

@@ -1,12 +1,16 @@
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig = {
   reactStrictMode: true,
-  // Optional: Enable scroll animations or WebGL support if used in Motion
+
   experimental: {
     scrollRestoration: true,
   },
+
   images: {
-    domains: ['wwww.kevinjuma.com'], // if motion images or assets are hosted externally
+    unoptimized: !isProd, // OFF locally, ON in production
+    domains: ['www.kevinjuma.com'],
   },
 };
 
