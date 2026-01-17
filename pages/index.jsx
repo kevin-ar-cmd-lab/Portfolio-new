@@ -17,14 +17,16 @@ export default function Home() {
       </p>
 
       <div className="flex justify-center">
-        <Image
-          src="/kevinjuma.jpg" // must match the file name in public exactly
-          alt="kevinjuma-photo"
-          width={192}  // w-48
-          height={192} // h-48
-          className="rounded-full object-cover border-4 border-gray-800"
-          priority={true} // optional: ensures this image loads immediately
-        />
+        <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-gray-800">
+          <Image
+            src="/kevinjuma.jpg"
+            alt="kevinjuma-photo"
+            width={192}
+            height={192}
+            className="object-cover w-full h-full"
+            priority={true}
+          />
+        </div>
       </div>
     </div>
   );
