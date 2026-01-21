@@ -7,10 +7,31 @@ const Testimonials = ({ testimonials, darkMode }) => {
 
     return [...Array(5)].map((_, i) => {
       if (i < fullStars)
-        return <i key={i} className={`fas fa-star ${darkMode ? 'text-yellow-300' : 'text-yellow-400'}`}></i>;
+        return (
+          <i
+            key={i}
+            className={`fas fa-star ${
+              darkMode ? 'text-yellow-300' : 'text-yellow-400'
+            }`}
+          ></i>
+        );
       if (i === fullStars && hasHalfStar)
-        return <i key={i} className={`fas fa-star-half-alt ${darkMode ? 'text-yellow-300' : 'text-yellow-400'}`}></i>;
-      return <i key={i} className={`far fa-star ${darkMode ? 'text-gray-600' : 'text-gray-300'}`}></i>;
+        return (
+          <i
+            key={i}
+            className={`fas fa-star-half-alt ${
+              darkMode ? 'text-yellow-300' : 'text-yellow-400'
+            }`}
+          ></i>
+        );
+      return (
+        <i
+          key={i}
+          className={`far fa-star ${
+            darkMode ? 'text-gray-600' : 'text-gray-300'
+          }`}
+        ></i>
+      );
     });
   };
 
@@ -24,13 +45,24 @@ const Testimonials = ({ testimonials, darkMode }) => {
           }`}
         >
           <div className="flex items-center mb-4">
-            <img src={t.img} alt={t.name} className="w-12 h-12 rounded-full mr-4 object-cover" />
+            <img
+              src={t.img}
+              alt={t.name}
+              className="w-12 h-12 rounded-full mr-4 object-cover"
+            />
             <div>
               <h4 className="font-semibold">{t.name}</h4>
-              <p className="text-sm text-gray-400">{t.title}</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                {t.title}
+              </p>
             </div>
           </div>
-          <p className="text-gray-300 mb-3">{`"${t.quote}"`}</p>
+
+          {/* ✅ FIXED QUOTE CLARITY */}
+          <p className="mb-3 text-gray-600 dark:text-gray-300">
+            {`"${t.quote}"`}
+          </p>
+
           <div className="flex">{renderStars(t.rating)}</div>
         </div>
       ))}
