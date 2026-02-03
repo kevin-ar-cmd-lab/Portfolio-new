@@ -68,7 +68,7 @@ export async function handler(event) {
     console.error('Brevo subscription error:', err);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'Internal server error.' }),
+      body: JSON.stringify({ error: 'Sorry, we could not reach the server' }),
     };
   }
 }
