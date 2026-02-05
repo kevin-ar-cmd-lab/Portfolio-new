@@ -1,4 +1,4 @@
-import SibApiV3Sdk from 'sib-api-v3-sdk';
+import * as Brevo from '@getbrevo/brevo';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -12,25 +12,24 @@ export default async function handler(req, res) {
   }
 
   try {
-    const client = SibApiV3Sdk.ApiClient.instance;
-    client.authentications['api-key'].apiKey = process.env.BREVO_API_KEY;
+    const apiInstance = new Brevo.TransactionalEmailsApi();
+    apiInstance.setApiKey(Brevo.TransactionalEmailsApiApiKeys.apiKey, process.env.BREVO_API_KEY);
 
-    const api = new SibApiV3Sdk.TransactionalEmailsApi();
-
-    await api.sendTransacEmail({
-      sender: {
-        email: process.env.BREVO_SENDER_EMAIL,
-        name: process.env.BREVO_SENDER_NAME
-      },
-      to: [{ email: process.env.BREVO_SENDER_EMAIL }],
-      replyTo: { email },
-      subject: 'New Portfolio Contact',
-      htmlContent: `
+    const sendSmtpEmail = new Brevo.SendSmtpEmail();
+    sendSmtpEmail.sender = {
+      email: process.env.BREVO_SENDER_EMAIL,
+      name: process.env.BREVO_SENDER_NAME
+    };
+    sendSmtpEmail.to = [{ email: process.env.BREVO_SENDER_EMAIL }];
+    sendSmtpEmail.replyTo = { email };
+    sendSmtpEmail.subject = 'New Portfolio Contact';
+    sendSmtpEmail.htmlContent = `
         <p><b>Name:</b> ${name}</p>
         <p><b>Email:</b> ${email}</p>
         <p>${message}</p>
-      `
-    });
+      `;
+
+    await apiInstance.sendTransacEmail(sendSmtpEmail);
 
     return res.status(200).json({ success: true });
   } catch (error) {
