@@ -3,25 +3,27 @@
 import { usePathname } from 'next/navigation';
 
 const normalizePath = (path) => {
-  if (!path) return '/';
-  if (path === '/') return '/';
-  return path.replace(/\/+$/, '');
+  if (!path || path === '/') return '/';
+  // Remove trailing slash, query params, and hash
+  return path.replace(/\/+$/, '').split('?')[0].split('#')[0];
 };
 
 export function useActivePath() {
   const pathname = usePathname();
   const currentPath = normalizePath(pathname);
 
-  const isExactActive = (href) => {
-    return currentPath === normalizePath(href);
-  };
+  // Exact path match
+  const isExactActive = (href) => currentPath === normalizePath(href);
 
+  // Section match (for highlighting parent nav items)
   const isSectionActive = (href) => {
     const normalizedHref = normalizePath(href);
-    return (
-      currentPath === normalizedHref ||
-      currentPath.startsWith(`${normalizedHref}/`)
-    );
+
+    // Root '/' should only be exact
+    if (normalizedHref === '/') return currentPath === '/';
+
+    // Active if current path is exactly the section or nested within it
+    return currentPath === normalizedHref || currentPath.startsWith(normalizedHref + '/');
   };
 
   return {
