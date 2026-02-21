@@ -15,11 +15,11 @@ const ProjectCard = ({ project, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.15 }}
       viewport={{ once: true }}
-      className={`rounded-xl overflow-hidden shadow-md transition duration-300 hover:-translate-y-2 hover:shadow-xl ${
+      className={`rounded-xl overflow-hidden shadow-md transition duration-300 hover:-translate-y-2 hover:shadow-xl flex flex-col ${
         darkMode ? "bg-gray-800" : "bg-white"
       }`}
     >
-      {/* Project Image */}
+      {/* Image */}
       <div className="h-48 overflow-hidden">
         <img
           src={project.img}
@@ -29,8 +29,9 @@ const ProjectCard = ({ project, index }) => {
       </div>
 
       {/* Content */}
-      <div className="p-6 flex flex-col justify-between h-full">
-        <div>
+      <div className="p-6 flex flex-col flex-grow">
+        {/* Text Section */}
+        <div className="flex-grow">
           <div className="flex justify-between items-center mb-3">
             <h3
               className={`text-xl font-semibold ${
@@ -52,7 +53,7 @@ const ProjectCard = ({ project, index }) => {
           </div>
 
           <p
-            className={`mb-5 text-sm leading-relaxed ${
+            className={`mb-6 text-sm leading-relaxed ${
               darkMode ? "text-gray-300" : "text-gray-600"
             }`}
           >
@@ -60,35 +61,31 @@ const ProjectCard = ({ project, index }) => {
           </p>
         </div>
 
-        {/* CTA Buttons */}
-        <div className="flex gap-3 mt-auto">
-          {project.live && (
-            <a
-              href={project.live}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 text-sm font-medium bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition"
-            >
-              <ArrowTopRightOnSquareIcon className="w-4 h-4" />
-              Live
-            </a>
-          )}
+        {/* CTA Buttons — Always Visible */}
+        <div className="flex gap-3">
+          <a
+            href={project.live}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2 text-sm font-medium bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition"
+          >
+            <ArrowTopRightOnSquareIcon className="w-4 h-4" />
+            Live
+          </a>
 
-          {project.github && (
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg border transition ${
-                darkMode
-                  ? "border-gray-600 text-gray-300 hover:bg-gray-700"
-                  : "border-gray-300 text-gray-700 hover:bg-gray-100"
-              }`}
-            >
-              <CodeBracketIcon className="w-4 h-4" />
-              Code
-            </a>
-          )}
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg border transition ${
+              darkMode
+                ? "border-gray-600 text-gray-300 hover:bg-gray-700"
+                : "border-gray-300 text-gray-700 hover:bg-gray-100"
+            }`}
+          >
+            <CodeBracketIcon className="w-4 h-4" />
+            Code
+          </a>
         </div>
       </div>
     </motion.div>
