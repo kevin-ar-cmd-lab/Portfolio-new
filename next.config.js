@@ -9,8 +9,11 @@ const nextConfig = {
   },
 
   images: {
-    unoptimized: !isProd, // OFF locally, ON in production
-    domains: ['www.kevinjuma.com'],
+    unoptimized: !isProd,
+    domains: [
+      'www.kevinjuma.com',
+      'images.unsplash.com',
+    ],
   },
 };
 

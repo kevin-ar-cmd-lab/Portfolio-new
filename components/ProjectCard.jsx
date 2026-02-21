@@ -1,6 +1,10 @@
 import React from "react";
 import { useTheme } from "../context/ThemeContext";
 import { motion } from "framer-motion";
+import {
+  ArrowTopRightOnSquareIcon,
+  CodeBracketIcon,
+} from "@heroicons/react/24/outline";
 
 const ProjectCard = ({ project, index }) => {
   const { darkMode } = useTheme();
@@ -9,78 +13,82 @@ const ProjectCard = ({ project, index }) => {
     <motion.div
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.2 }}
+      transition={{ duration: 0.5, delay: index * 0.15 }}
       viewport={{ once: true }}
-      className={`project-card rounded-lg overflow-hidden shadow-md transition duration-300 hover:shadow-lg ${
+      className={`rounded-xl overflow-hidden shadow-md transition duration-300 hover:-translate-y-2 hover:shadow-xl ${
         darkMode ? "bg-gray-800" : "bg-white"
       }`}
     >
+      {/* Project Image */}
       <div className="h-48 overflow-hidden">
         <img
           src={project.img}
           alt={project.title}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover transition duration-300 hover:scale-105"
         />
       </div>
-      <div className="p-6">
-        <div className="flex justify-between items-center mb-2">
-          <h3
-            className={`text-xl font-semibold ${
-              darkMode ? "text-white" : "text-gray-800"
-            }`}
-          >
-            {project.title}
-          </h3>
-          <span
-            className={`text-xs px-2 py-1 rounded ${
-              darkMode
-                ? "bg-indigo-700 text-indigo-100"
-                : "bg-indigo-100 text-indigo-800"
-            }`}
-          >
-            {project.tech}
-          </span>
-        </div>
-        <p
-          className={`mb-4 ${
-            darkMode ? "text-gray-300" : "text-gray-700"
-          }`}
-        >
-          {project.description}
-        </p>
-        <div className="flex justify-between items-center">
-          <a
-            href="#"
-            className={`font-medium ${
-              darkMode
-                ? "text-indigo-400 hover:text-indigo-300"
-                : "text-indigo-600 hover:text-indigo-800"
-            }`}
-          >
-            View Project
-          </a>
-          <div className="flex space-x-2">
-            <a
-              href="#"
-              className={`${
-                darkMode
-                  ? "text-gray-400 hover:text-indigo-300"
-                  : "text-gray-500 hover:text-indigo-600"
+
+      {/* Content */}
+      <div className="p-6 flex flex-col justify-between h-full">
+        <div>
+          <div className="flex justify-between items-center mb-3">
+            <h3
+              className={`text-xl font-semibold ${
+                darkMode ? "text-white" : "text-gray-800"
               }`}
             >
-              <i className="fab fa-github"></i>
-            </a>
-            <a
-              href="#"
-              className={`${
+              {project.title}
+            </h3>
+
+            <span
+              className={`text-xs px-3 py-1 rounded-full font-medium ${
                 darkMode
-                  ? "text-gray-400 hover:text-indigo-300"
-                  : "text-gray-500 hover:text-indigo-600"
+                  ? "bg-indigo-700 text-indigo-100"
+                  : "bg-indigo-100 text-indigo-800"
               }`}
             >
-              <i className="fas fa-external-link-alt"></i>
-            </a>
+              {project.tech}
+            </span>
           </div>
+
+          <p
+            className={`mb-5 text-sm leading-relaxed ${
+              darkMode ? "text-gray-300" : "text-gray-600"
+            }`}
+          >
+            {project.description}
+          </p>
+        </div>
+
+        {/* CTA Buttons */}
+        <div className="flex gap-3 mt-auto">
+          {project.live && (
+            <a
+              href={project.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2 text-sm font-medium bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition"
+            >
+              <ArrowTopRightOnSquareIcon className="w-4 h-4" />
+              Live
+            </a>
+          )}
+
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg border transition ${
+                darkMode
+                  ? "border-gray-600 text-gray-300 hover:bg-gray-700"
+                  : "border-gray-300 text-gray-700 hover:bg-gray-100"
+              }`}
+            >
+              <CodeBracketIcon className="w-4 h-4" />
+              Code
+            </a>
+          )}
         </div>
       </div>
     </motion.div>
