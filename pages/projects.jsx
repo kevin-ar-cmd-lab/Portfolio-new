@@ -12,8 +12,8 @@ const Projects = () => {
       description:
         "A scalable full-stack e-commerce platform featuring secure Stripe payments, authentication, product management, cart logic, and admin analytics dashboard.",
       img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1170&q=80",
-      live: "https://your-ecommerce-live-link.com",
-      github: "https://github.com/yourusername/ecommerce-app",
+      live: "https://roadtrip-plan.netlify.app/",
+      github: "https://github.com/kevin-ar-cmd-lab/E-commerce-app.git",
     },
     {
       title: "Roadtrip Planner Application",
@@ -21,8 +21,8 @@ const Projects = () => {
       description:
         "Interactive trip planning application with dynamic route rendering, itinerary management, place search integration, and persistent trip storage.",
       img: "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=1170&q=80",
-      live: "https://your-roadtrip-live-link.com",
-      github: "https://github.com/yourusername/roadtrip-planner",
+      live: "https://roadtrip-plan.netlify.app/",
+      github: "https://github.com/kevin-ar-cmd-lab/roadtrip-planner.git",
     },
   ];
 
