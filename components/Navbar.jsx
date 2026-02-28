@@ -28,10 +28,8 @@ export default function Navbar() {
   const isActiveLink = (link) =>
     link.type === 'section' ? isSectionActive(link.href) : isExactActive(link.href);
 
-  // Handles link click with full page refresh
   const handleLinkClick = (href) => {
     setTimeout(() => {
-      // Only reload if still on the page after navigation
       if (window.location.pathname === href) {
         window.location.reload();
       }
@@ -51,11 +49,12 @@ export default function Navbar() {
                 alt="Logo"
                 width={32}
                 height={32}
-                className="rounded-full object-cover border-4 border-gray-800"
+                className="rounded-full object-cover border-2 border-blue-500"
                 priority
               />
-              <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-yellow-400 to-green-400 animate-cycle-color drop-shadow-sm">
-                Kevin&apos;s Digital WorkSpace
+              {/* FIXED: single consistent colour instead of multicolor gradient */}
+              <span className="text-xl font-bold text-blue-500 dark:text-blue-400">
+                Kevin&apos;s Digital Space
               </span>
             </div>
 
@@ -81,7 +80,9 @@ export default function Navbar() {
                     />
                     <span
                       className={`transition-colors duration-300 ${
-                        isActive ? 'text-blue-500 dark:text-blue-400' : ''
+                        isActive
+                          ? 'text-blue-500 dark:text-blue-400'
+                          : 'text-gray-700 dark:text-gray-300'
                       }`}
                     >
                       {label}
@@ -129,7 +130,7 @@ export default function Navbar() {
                   className={`flex flex-col items-center text-xs font-medium transition-colors duration-300 ${
                     isActive
                       ? 'text-blue-500 dark:text-blue-400'
-                      : 'text-black dark:text-white hover:text-blue-500 dark:hover:text-blue-300'
+                      : 'text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-300'
                   }`}
                 >
                   <Icon className="h-5 w-5 mb-1" aria-hidden="true" />
