@@ -45,7 +45,7 @@ export default function Navbar() {
             {/* Logo */}
             <div className="flex items-center space-x-2">
               <Image
-                src="/Kevin.jpg"
+                src="/logo.jpg"
                 alt="Logo"
                 width={32}
                 height={32}

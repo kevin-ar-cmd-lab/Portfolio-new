@@ -20,7 +20,7 @@ export default function Home() {
       <div className="relative mb-6">
         <div className="w-36 h-36 rounded-full overflow-hidden border-4 border-blue-500 shadow-lg shadow-blue-500/30">
           <Image
-            src="/kevinjuma.jpg"
+            src="/kevinjuma.jpeg"
             alt="Kevin Juma - Web Developer"
             width={144}
             height={144}
