@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import NewsletterForm from './NewsletterForm';
 
 export default function Footer() {
   return (
@@ -58,15 +59,9 @@ export default function Footer() {
           {/* Stay Updated */}
           <div>
             <h4 className="text-lg font-semibold mb-4">Stay Updated</h4>
-            <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm">
-              Get updates directly to your inbox.
-            </p>
-            <Link
-              href="/Newsletter"
-              className="inline-block px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-full transition duration-300"
-            >
-              Subscribe
-            </Link>
+            <div className="max-w-sm">
+              <NewsletterForm variant="compact" />
+            </div>
 
             {/* Social Icons */}
             <div className="flex space-x-4 mt-6">

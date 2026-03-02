@@ -5,7 +5,6 @@ import { useRouter } from 'next/router';
 import Loader from '../components/Loader';
 import Layout from '../components/Layout';
 import { ThemeProvider, useTheme } from '../context/ThemeContext';
-import NewsletterForm from '../components/NewsletterForm';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
 function AppWrapper({ Component, pageProps }) {

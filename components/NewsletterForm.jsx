@@ -7,7 +7,8 @@ if (typeof window !== 'undefined') {
   confetti = require('canvas-confetti').default;
 }
 
-export default function NewsletterForm() {
+export default function NewsletterForm({ variant = 'card' }) {
+  const isCompact = variant === 'compact';
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState(null); // { type: 'success' | 'error', message: string }
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -74,11 +75,37 @@ export default function NewsletterForm() {
 
   return (
     <>
-      <div className="bg-slate-800/70 backdrop-blur-md rounded-2xl shadow-2xl p-8 max-w-md w-full text-center text-white">
-        <h2 className="text-2xl font-bold mb-2 text-indigo-400">Stay Updated</h2>
-        <p className="mb-6 text-sm text-gray-300">Subscribe to our newsletter for the latest updates.</p>
+      <div
+        className={
+          isCompact
+            ? 'w-full text-left'
+            : 'bg-slate-800/70 backdrop-blur-md rounded-2xl shadow-2xl p-8 max-w-md w-full text-center text-white'
+        }
+      >
+        <h2
+          className={
+            isCompact
+              ? 'text-lg font-semibold text-gray-900 dark:text-gray-100'
+              : 'text-2xl font-bold mb-2 text-indigo-400'
+          }
+        >
+          Stay Updated
+        </h2>
+        <p
+          className={
+            isCompact
+              ? 'mb-4 text-sm text-gray-600 dark:text-gray-400'
+              : 'mb-6 text-sm text-gray-300'
+          }
+        >
+          Subscribe to our newsletter for the latest updates.
+        </p>
 
-        <form onSubmit={handleSubmit} className="flex flex-col space-y-4" aria-busy={isSubmitting}>
+        <form
+          onSubmit={handleSubmit}
+          className={isCompact ? 'flex flex-col gap-3' : 'flex flex-col space-y-4'}
+          aria-busy={isSubmitting}
+        >
           <input
             type="email"
             placeholder="Enter your email"
@@ -88,21 +115,33 @@ export default function NewsletterForm() {
               if (status) setStatus(null);
             }}
             disabled={isSubmitting}
-            className="px-4 py-2 rounded-md bg-slate-700 placeholder-gray-400 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
+            className={
+              isCompact
+                ? 'px-4 py-2 rounded-md bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed'
+                : 'px-4 py-2 rounded-md bg-slate-700 placeholder-gray-400 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed'
+            }
             aria-label="Email address"
             required
           />
           <button
             type="submit"
             disabled={isSubmitting}
-            className="bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-md transition font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+            className={
+              isCompact
+                ? 'bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md transition font-semibold disabled:opacity-50 disabled:cursor-not-allowed'
+                : 'bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-md transition font-semibold disabled:opacity-50 disabled:cursor-not-allowed'
+            }
           >
             {isSubmitting ? 'Submitting...' : 'Subscribe'}
           </button>
         </form>
 
-        <div className="mt-4 text-sm" role="status" aria-live="polite">
-          {status?.type === 'error' && <p className="text-red-400">{status.message}</p>}
+        <div className="mt-3 text-sm" role="status" aria-live="polite">
+          {status?.type === 'error' && (
+            <p className={isCompact ? 'text-red-600 dark:text-red-400' : 'text-red-400'}>
+              {status.message}
+            </p>
+          )}
         </div>
       </div>
 
