@@ -22,8 +22,6 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               {[
-                { href: '/', label: 'Home' },
-                { href: '/about', label: 'About' },
                 { href: '/about#skills', label: 'Skills' },
                 { href: '/blog', label: 'Blog' },
                 { href: '/testimonials', label: 'Testimonials' },
