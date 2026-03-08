@@ -1,12 +1,13 @@
 import Head from 'next/head';
 
 export default function SEOHead({ seo = {}, schemaType = 'webpage' }) {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kevinjuma.netlify.app';
   const {
-    title = 'Default Title',
-    description = 'Default Description',
-    keywords = 'default, keywords',
-    image = '/default-image.jpg',
-    url = 'https://yourdomain.com',
+    title = "Kevin's Digital Space",
+    description = 'Portfolio site for Kevin Juma, web developer and designer.',
+    keywords = 'kevin, portfolio, web developer, ui ux',
+    image = '/logo.jpg',
+    url = siteUrl,
     datePublished,
     dateModified,
   } = seo;
@@ -35,7 +36,7 @@ export default function SEOHead({ seo = {}, schemaType = 'webpage' }) {
         name: "Kevin Digital Space",
         logo: {
           "@type": "ImageObject",
-          url: "https://yourdomain.com/logo.png"
+          url: `${siteUrl}/logo.jpg`
         }
       },
       datePublished: datePublished || "2025-01-01",
@@ -47,11 +48,11 @@ export default function SEOHead({ seo = {}, schemaType = 'webpage' }) {
       "@context": "https://schema.org",
       "@type": "Organization",
       name: "Kevin Digital Space",
-      url,
-      logo: "https://yourdomain.com/logo.png",
+      url: siteUrl,
+      logo: `${siteUrl}/logo.jpg`,
       sameAs: [
         "https://www.facebook.com/nomia.otieno",
-        "https://github.com/kevin-ar-cmd"
+        "https://github.com/kevin-ar-cmd-lab"
       ],
       contactPoint: {
         "@type": "ContactPoint",

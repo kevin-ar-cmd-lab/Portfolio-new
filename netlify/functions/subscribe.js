@@ -43,8 +43,17 @@ export async function handler(event) {
   }
 
   const apiKey = process.env.BREVO_API_KEY;
+  const rawListId = process.env.BREVO_LIST_ID;
+  const listId = Number.parseInt(rawListId || '5', 10);
   if (!apiKey) {
     console.error('Missing BREVO_API_KEY');
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: 'Server configuration error.' }),
+    };
+  }
+  if (!Number.isInteger(listId) || listId <= 0) {
+    console.error('Invalid BREVO_LIST_ID');
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Server configuration error.' }),
@@ -61,7 +70,7 @@ export async function handler(event) {
       },
       body: JSON.stringify({
         email,
-        listIds: [5], // Update this to match your list ID
+        listIds: [listId],
         updateEnabled: true,
       }),
     });

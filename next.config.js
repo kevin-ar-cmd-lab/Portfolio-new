@@ -10,9 +10,15 @@ const nextConfig = {
 
   images: {
     unoptimized: !isProd,
-    domains: [
-      'www.kevinjuma.com',
-      'images.unsplash.com',
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'www.kevinjuma.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
     ],
   },
 };

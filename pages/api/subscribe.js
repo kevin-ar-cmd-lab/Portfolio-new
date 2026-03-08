@@ -10,8 +10,14 @@ export default async function handler(req, res) {
   }
 
   const apiKey = process.env.BREVO_API_KEY;
+  const rawListId = process.env.BREVO_LIST_ID;
+  const listId = Number.parseInt(rawListId || '5', 10);
   if (!apiKey) {
     console.error('Missing BREVO_API_KEY');
+    return res.status(500).json({ error: 'Server configuration error.' });
+  }
+  if (!Number.isInteger(listId) || listId <= 0) {
+    console.error('Invalid BREVO_LIST_ID');
     return res.status(500).json({ error: 'Server configuration error.' });
   }
 
@@ -25,7 +31,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         email,
-        listIds: [5], // Replace with your valid list ID
+        listIds: [listId],
         updateEnabled: true,
       }),
     });
