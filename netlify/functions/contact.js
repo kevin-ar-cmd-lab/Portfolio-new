@@ -1,5 +1,4 @@
 
-// ✅ Improved `contact.js` ```js
 // netlify/functions/contact.js
 //
 // This Netlify function processes contact form submissions and
