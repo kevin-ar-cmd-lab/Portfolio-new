@@ -16,13 +16,13 @@ export default function CV() {
         </p>
 
         <div className="flex justify-center gap-4 mt-4 text-blue-600 dark:text-blue-400">
-          <a href="mailto:kevin@example.com" className="hover:underline">
+          <a href="mailto:otienokevino100090@gmail.com" className="hover:underline">
             <FaEnvelope />
           </a>
-          <a href="https://linkedin.com/in/kevinjuma" target="_blank" rel="noreferrer">
+          <a href="https://www.linkedin.com/in/kevin-otieno-juma-9868a6273/" target="_blank" rel="noreferrer">
             <FaLinkedin />
           </a>
-          <a href="https://github.com/kevinjuma" target="_blank" rel="noreferrer">
+          <a href="https://github.com/kevin-ar-cmd-lab" target="_blank" rel="noreferrer">
             <FaGithub />
           </a>
         </div>
@@ -69,8 +69,8 @@ export default function CV() {
         <section>
           <h2 className="text-xl font-semibold border-b pb-2 mb-4 border-gray-300 dark:border-gray-600">Education</h2>
           <div>
-            <h3 className="font-bold">Bachelor of Science in Computer Science</h3>
-            <span className="text-sm text-gray-600 dark:text-gray-400">XYZ University, 2018 – 2022</span>
+            <h3 className="font-bold">Software Development & Product Design Training</h3>
+            <span className="text-sm text-gray-600 dark:text-gray-400">Project-based learning and practical delivery experience</span>
           </div>
         </section>
 

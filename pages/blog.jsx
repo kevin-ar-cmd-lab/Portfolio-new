@@ -6,21 +6,21 @@ export default function Blog() {
   const blogPosts = [
     {
       title: 'The Future of Web Development',
-      image: 'https://via.placeholder.com/800x400',
+      image: '/logo.jpg',
       description: 'Explore the latest trends in web development, including JAMstack, serverless, and more.',
-      link: '#',
+      link: 'https://kevins-web-developement-corner.blogspot.com/',
     },
     {
       title: 'Understanding Tailwind CSS',
-      image: 'https://via.placeholder.com/800x400',
+      image: '/logo.jpg',
       description: 'A comprehensive guide to Tailwind CSS and how it can simplify your styling workflow.',
-      link: '#',
+      link: 'https://kevins-web-developement-corner.blogspot.com/',
     },
     {
       title: 'Next.js: The React Framework for Production',
-      image: 'https://via.placeholder.com/800x400',
+      image: '/logo.jpg',
       description: 'Why Next.js is the perfect choice for building modern, scalable web applications.',
-      link: '#',
+      link: 'https://kevins-web-developement-corner.blogspot.com/',
     },
   ];
 
@@ -52,6 +52,8 @@ export default function Blog() {
                   </p>
                   <a
                     href={post.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={darkMode
                       ? 'text-indigo-400 hover:text-indigo-300 mt-4 inline-block font-medium'
                       : 'text-indigo-600 hover:text-indigo-800 mt-4 inline-block font-medium'

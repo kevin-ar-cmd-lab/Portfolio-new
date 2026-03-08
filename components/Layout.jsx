@@ -7,6 +7,7 @@ import SEOData from './SEOData';
 import FitToScreenLayout from './FitToScreenLayout';
 
 export default function Layout({ children }) {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kevinjuma.netlify.app';
   const [hasMounted, setHasMounted] = useState(false);
   const router = useRouter();
 
@@ -20,11 +21,11 @@ export default function Layout({ children }) {
   const normalizedRoute = currentRoute.toLowerCase();
 
   const defaultSEO = {
-    title: "Default Title",
-    description: "Default Description",
-    keywords: "default, keywords",
-    image: "/default-image.jpg",
-    url: "https://yourdomain.com",
+    title: "Kevin's Digital Space",
+    description: "Portfolio site for Kevin Juma, web developer and designer.",
+    keywords: "kevin, portfolio, web developer, ui ux",
+    image: "/logo.jpg",
+    url: siteUrl,
   };
 
   const seoData = SEOData[normalizedRoute] || defaultSEO;

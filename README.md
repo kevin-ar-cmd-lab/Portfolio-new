@@ -69,7 +69,6 @@ A modern, responsive personal portfolio website built with **Next.js** and **Tai
 ├── styles/                  # Global styles
 │   └── globals.css          # Tailwind directives & custom CSS
 ├── utils/                   # Utility helpers
-│   └── emailService.js      # Brevo email integration
 ├── public/                  # Static assets (images, favicon)
 ├── netlify/                 # Netlify configuration
 ├── next.config.js           # Next.js configuration
@@ -105,6 +104,7 @@ Create a `.env.local` file in the project root and add the following variables:
 BREVO_API_KEY=your_brevo_api_key
 BREVO_SENDER_EMAIL=your_sender_email
 BREVO_SENDER_NAME=your_sender_name
+BREVO_LIST_ID=your_brevo_list_id
 ```
 
 ### Development
